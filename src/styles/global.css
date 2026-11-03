@@ -17,3 +17,66 @@
   letter-spacing: 0;
   line-height: 0;
 }
+
+/* ───────────── Motion (Emil Kowalski principles) ─────────────
+   transform/opacity/clip-path only · strong ease-out for entrances ·
+   reveals fire once · hover gated to fine pointers · reduced motion = gentler.
+   Hidden states only apply under html.js, so content shows without JS. */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero-settle { from { transform: scale(1.08); } to { transform: none; } }
+@keyframes line-in { from { opacity: 0; transform: scaleX(0.6); } to { opacity: 1; transform: none; } }
+
+/* Hero intro sequence */
+.js .intro-img { animation: hero-settle 2400ms var(--ease-out) both; }
+.js .intro-fade { animation: fade-in 900ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
+.js .intro-up { animation: fade-up 900ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
+.js .intro-line { animation: line-in 1100ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
+.js .intro-line.origin-r { transform-origin: right; }
+.js .intro-line.origin-l { transform-origin: left; }
+.word { display: inline-block; }
+
+/* Scroll reveals */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* Large image wipe-in */
+.js [data-wipe] {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1200ms var(--ease-in-out);
+  transition-delay: var(--d, 0ms);
+}
+.js [data-wipe].is-in { clip-path: inset(0 0 0 0); }
+
+/* Parallax targets: JS writes transform; keep compositor-friendly */
+[data-parallax] { will-change: transform; }
+
+/* Micro-interactions */
+.btn { transition: background-color 200ms ease, color 200ms ease, transform 160ms var(--ease-out); }
+.btn:active { transform: scale(0.97); }
+.zoom { overflow: hidden; }
+.zoom img { transition: transform 700ms var(--ease-out); }
+.arrow-link svg { transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .zoom:hover img { transform: scale(1.04); }
+  .arrow-link:hover svg { transform: translateX(3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .intro-img, .js .intro-line { animation: none; }
+  .js .intro-up, .js .intro-fade { animation: fade-in 400ms ease both; }
+  .js [data-reveal] { transform: none; transition: opacity 400ms ease; transition-delay: 0ms; }
+  .js [data-wipe] { clip-path: none; transition: none; }
+  [data-parallax] { transform: none !important; will-change: auto; }
+  .zoom img, .zoom:hover img, .btn:active { transform: none; }
+}

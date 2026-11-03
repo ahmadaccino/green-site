@@ -6,6 +6,7 @@ const { title = 'Wandertrex — Travel Website' } = Astro.props;
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
+  <script is:inline>document.documentElement.classList.add("js")</script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,5 +15,6 @@ const { title = 'Wandertrex — Travel Website' } = Astro.props;
 </head>
 <body class="overflow-x-clip bg-cream font-sans text-forest antialiased selection:bg-forest selection:text-cream">
   <slot />
+  <script>import "../scripts/motion.ts";</script>
 </body>
 </html>
