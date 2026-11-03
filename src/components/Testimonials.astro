@@ -9,18 +9,18 @@ const items = [
 <section id="testimonials" class="overflow-hidden pb-20 pt-28 lg:pb-[76px] lg:pt-[260px]">
   <div class="px-5 md:px-10">
     <div class="flex items-center justify-between gap-6">
-      <h2 class="text-[max(30px,3.47vw)] leading-none">
+      <h2 data-reveal class="text-[max(30px,3.47vw)] leading-none">
         <span class="swash ml-[.08em] mr-[.38em] align-[-.06em] text-[1.9em]">W</span>hat they’re saying about us
       </h2>
-      <a href="#" class="group inline-flex shrink-0 items-center gap-[10px] text-[17px] font-semibold lg:mr-[10px]">
+      <a href="#" class="arrow-link group inline-flex shrink-0 items-center gap-[10px] text-[17px] font-semibold lg:mr-[10px]">
         See All
         <svg viewBox="0 0 6 10" class="h-[9px] w-[5px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"><path d="M0 0l6 5-6 5z" fill="currentColor" /></svg>
       </a>
     </div>
 
-    <div class="mt-12 flex snap-x snap-mandatory gap-[70px] overflow-x-auto [scrollbar-width:none] lg:mt-[78px] lg:overflow-visible">
+    <div data-stagger class="mt-12 flex snap-x snap-mandatory gap-[70px] overflow-x-auto [scrollbar-width:none] lg:mt-[78px] lg:overflow-visible">
       {items.map((t) => (
-        <figure class="flex w-[85vw] shrink-0 snap-start flex-col sm:w-[530px]">
+        <figure data-reveal class="flex w-[85vw] shrink-0 snap-start flex-col sm:w-[530px]">
           <blockquote class="text-[24px] leading-[31px] md:text-[31px] md:leading-[38px]">{t.quote}</blockquote>
           <figcaption class="mt-auto flex items-center gap-5 pt-[53px]">
             <img src={`https://images.unsplash.com/photo-${t.img}?auto=format&fit=crop&w=160&h=160&q=75`} alt={t.name} loading="lazy" class="size-20 shrink-0 rounded-full object-cover" />
