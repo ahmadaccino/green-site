@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fffef5;   /* page background + text on photos */
+  --color-forest: #355933;  /* headings + body copy */
+  --color-pine: #273022;    /* dark button fill */
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Monsieur La Doulaise", cursive;
+}
+
+/* Swash capitals sit inline with the sans word but have line-height 0,
+   so their tall flourishes don't push the line box around. */
+.swash {
+  font-family: "Monsieur La Doulaise", cursive;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0;
+}
