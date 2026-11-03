@@ -1,0 +1,6 @@
+{
+  "name": "green-site",
+  "account_id": "096fdb50629de275e5a7e57b33b811ad",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./dist" }
+}
