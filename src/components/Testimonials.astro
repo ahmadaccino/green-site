@@ -1,0 +1,36 @@
+---
+const items = [
+  { quote: '“My unforgettable journey with Wandertrex exceeded all expectations! As a busy architect, I rarely have time to plan trips, but Wandertrex took care of everything”', img: '1544005313-94ddf0286df2', initial: 'S', rest: 'arah Park', name: 'Sarah Park', swashClass: 'mr-[.35em]', role: 'Architect' },
+  { quote: '“Exploring the rugged trails of Seoraksan National Park was a dream come true. The breathtaking views of towering peaks and lush forests were simply mesmerizing.”', img: '1624091844772-554661d10173', initial: 'M', rest: 'innie Lee', name: 'Minnie Lee', swashClass: '-mr-[.3em]', role: 'Environmentalist' },
+  { quote: '“my trip with Wandertrex was a culinary delight, from savoring traditional Korean barbecue in Seoul to indulging in fresh seafood on the shores of Busan.”', img: '1645002124895-009a4c3ea3af', initial: 'A', rest: 'lex Kim', name: 'Alex Kim', swashClass: 'mr-[.09em]', role: 'Food Vlogger' },
+  { quote: '“Watching the sunrise from Seongsan Ilchulbong was the highlight of our year. Every ferry, transfer and hanok stay was arranged perfectly.”', img: '1534528741775-53994a69daeb', initial: 'J', rest: 'isoo Han', name: 'Jisoo Han', swashClass: '-mr-[.05em]', role: 'Photographer' },
+];
+---
+<section id="testimonials" class="overflow-hidden pb-20 pt-28 lg:pb-[76px] lg:pt-[260px]">
+  <div class="px-5 md:px-10">
+    <div class="flex items-center justify-between gap-6">
+      <h2 class="text-[max(30px,3.47vw)] leading-none">
+        <span class="swash ml-[.08em] mr-[.38em] align-[-.06em] text-[1.9em]">W</span>hat they’re saying about us
+      </h2>
+      <a href="#" class="group inline-flex shrink-0 items-center gap-[10px] text-[17px] font-semibold lg:mr-[10px]">
+        See All
+        <svg viewBox="0 0 6 10" class="h-[9px] w-[5px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"><path d="M0 0l6 5-6 5z" fill="currentColor" /></svg>
+      </a>
+    </div>
+
+    <div class="mt-12 flex snap-x snap-mandatory gap-[70px] overflow-x-auto [scrollbar-width:none] lg:mt-[78px] lg:overflow-visible">
+      {items.map((t) => (
+        <figure class="flex w-[85vw] shrink-0 snap-start flex-col sm:w-[530px]">
+          <blockquote class="text-[24px] leading-[31px] md:text-[31px] md:leading-[38px]">{t.quote}</blockquote>
+          <figcaption class="mt-auto flex items-center gap-5 pt-[53px]">
+            <img src={`https://images.unsplash.com/photo-${t.img}?auto=format&fit=crop&w=160&h=160&q=75`} alt={t.name} loading="lazy" class="size-20 shrink-0 rounded-full object-cover" />
+            <div>
+              <p class="text-[26px] leading-8"><span class:list={['swash text-[1.3em] text-forest/75', t.swashClass]}>{t.initial}</span>{t.rest}</p>
+              <p class="mt-1 text-[17px] leading-[22px] text-forest/80">{t.role}</p>
+            </div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

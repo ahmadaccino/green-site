@@ -1,0 +1,53 @@
+---
+const u = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=400&h=470&q=75`;
+const left = ['1764147385070-d0d45dfab547', '1636625093308-e29128dbbc08', '1615472768508-9db82090f4c6', '1562680829-7927493f7a50'];
+const right = ['1726905064646-e61b5b68e5aa', '1762732526878-3dd89d99c904', '1662512319686-337000652291', '1667971286513-029a6afed4d5'];
+const tags = ['Mountain', 'Island', 'Adventure'];
+---
+<section id="destinations" class="overflow-hidden pb-[33px] pt-16 lg:pt-[107px]">
+  <div class="px-5 md:px-10">
+    <h2 class="relative text-[max(44px,10vw)] leading-none tracking-[-.025em] lg:whitespace-nowrap">
+      <span class="swash ml-[.35em] align-[.07em] text-[1.56em]">J</span>eju Coastal Escape
+    </h2>
+  </div>
+
+  <div class="relative z-10 mt-10 flex flex-col gap-6 lg:-mt-[2.3vw] lg:grid lg:grid-cols-[1fr_41.67vw_1fr] lg:gap-[6px]">
+    <!-- left: copy + thumbnails running off the left edge -->
+    <div class="flex min-w-0 flex-col justify-end gap-6">
+      <p class="px-5 text-[16px] leading-[24px] md:px-10 lg:pr-6 lg:text-[17px] lg:leading-[25px]">
+        its breathtaking landscapes, vibrant culture, and volcanic terrain, Jeju offers travelers an unparalleled blend of adventure and relaxation
+      </p>
+      <div class="hidden h-[13.9vw] flex-row-reverse gap-[6px] lg:flex">
+        {left.map((id) => <img src={u(id)} alt="" loading="lazy" class="h-full w-[11.8vw] shrink-0 object-cover" />)}
+      </div>
+    </div>
+
+    <!-- centre: featured package card -->
+    <article class="relative mx-5 aspect-[600/650] overflow-hidden md:mx-10 lg:mx-0">
+      <img
+        src="https://images.unsplash.com/photo-1590430738596-0f3d452ff356?auto=format&fit=crop&w=1200&q=80"
+        alt="Hikers climbing wooden steps up a grassy oreum in Jeju"
+        loading="lazy"
+        class="absolute inset-0 size-full object-cover"
+      />
+      <div class="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/50 to-transparent"></div>
+      <div class="absolute inset-x-6 bottom-6 flex items-end justify-between gap-4 text-cream md:inset-x-[33px] md:bottom-[33px]">
+        <div>
+          <p class="text-[32px] leading-none tracking-[-.02em] md:text-[40px]">₩300,000</p>
+          <p class="mt-[10px] text-[13px]">5 day, 6 night / Person</p>
+        </div>
+        <a href="#" class="grid h-[35px] shrink-0 place-items-center rounded-full border border-cream/80 bg-[#2b2e22]/40 px-6 text-[15px] backdrop-blur-sm transition-colors hover:bg-cream hover:text-pine">Get your ticket</a>
+      </div>
+    </article>
+
+    <!-- right: tags + thumbnails running off the right edge -->
+    <div class="flex min-w-0 flex-col justify-end gap-6">
+      <ul class="flex flex-wrap gap-[5px] px-5 text-[13px] md:px-10 lg:justify-end">
+        {tags.map((t) => <li class="grid h-8 place-items-center rounded-full border border-forest px-[21px]">{t}</li>)}
+      </ul>
+      <div class="flex h-[200px] gap-[6px] overflow-x-auto px-5 [scrollbar-width:none] md:px-10 lg:h-[13.9vw] lg:overflow-visible lg:px-0">
+        {right.map((id) => <img src={u(id)} alt="" loading="lazy" class="h-full w-[170px] shrink-0 object-cover lg:w-[11.8vw]" />)}
+      </div>
+    </div>
+  </div>
+</section>
