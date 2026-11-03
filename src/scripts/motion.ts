@@ -8,17 +8,25 @@ document.querySelectorAll<HTMLElement>('[data-stagger]').forEach((group) => {
   });
 });
 
+const wipeTargets = new Map<Element, Element>();
 const io = new IntersectionObserver(
   (entries) => {
     for (const e of entries) {
       if (!e.isIntersecting) continue;
-      e.target.classList.add('is-in');
+      (wipeTargets.get(e.target) ?? e.target).classList.add('is-in');
       io.unobserve(e.target); // fire once
     }
   },
   { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
 );
-document.querySelectorAll('[data-reveal], [data-wipe]').forEach((el) => io.observe(el));
+document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+// A fully clipped element (clip-path inset 100%) has zero visible area, so the
+// observer never reports it. Watch the unclipped parent instead.
+document.querySelectorAll<HTMLElement>('[data-wipe]').forEach((el) => {
+  const watch = el.parentElement ?? el;
+  wipeTargets.set(watch, el);
+  io.observe(watch);
+});
 
 if (!reduce) {
   const items = [...document.querySelectorAll<HTMLElement>('[data-parallax]')].map((el) => ({
